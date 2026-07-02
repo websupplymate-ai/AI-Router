@@ -1,0 +1,16 @@
+name = "ai-router"
+main = "src/index.js"
+compatibility_date = "2026-07-01"
+
+[vars]
+ENVIRONMENT = "production"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "platform-ai-usage"
+database_id = "6ee4de6d-6682-406b-b26f-90b5a8b2ba52"
+
+# ANTHROPIC_API_KEY is a SECRET — set it after first deploy with:
+#   wrangler secret put ANTHROPIC_API_KEY
+# or via the Worker's Settings -> Variables and Secrets in the dashboard.
+# Never put it in this file or commit it to the repo.
