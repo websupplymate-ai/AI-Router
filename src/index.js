@@ -123,7 +123,11 @@ async function handleRoute(request, env) {
     return jsonResponse({ error: "Both 'task' and 'prompt' are required." }, 400);
   }
 
-  const provider = preferredProvider === "NVIDIA" ? "NVIDIA" : "Claude";
+  // Defaults to NVIDIA since that's the provider currently configured on
+  // this Worker. Once ANTHROPIC_API_KEY is added, callers can request
+  // "Claude" explicitly, or flip this default back — either works, no
+  // other code changes needed (this is exactly the point of the Router).
+  const provider = preferredProvider === "Claude" ? "Claude" : "NVIDIA";
   let result;
   try {
     result = await callProvider(provider, prompt, env);
